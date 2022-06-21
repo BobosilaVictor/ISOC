@@ -39,7 +39,7 @@ export default function (props) {
     };
 
   
-    fetch("http://localhost:8080/api/v1/users", requestOptions)
+    fetch("http://44.204.42.126:8080/api/v1/users", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -63,7 +63,7 @@ export default function (props) {
     });
     var config = {
       method: 'post',
-      url: 'http://localhost:8080/api/v1/users/login',
+      url: 'http://44.204.42.126:8080/api/v1/users/login',
       headers: { 
         'Content-Type': 'application/x-www-form-urlencoded'
       },

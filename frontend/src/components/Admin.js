@@ -20,6 +20,10 @@ export default function Admin() {
         setFormMode(form_mode === "Add" ? "Delete" : "Add")
     }
 
+    const check_admin = event =>{
+	event.preventDefault();
+	
+    }
     const addMovie = event =>{
         event.preventDefault();
         setName('');
@@ -45,7 +49,7 @@ export default function Admin() {
           redirect: 'follow'
         };
         
-        fetch("http://localhost:8080/api/v1/movies", requestOptions)
+        fetch("http://44.204.42.126:8080/api/v1/movies", requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));        
@@ -59,7 +63,7 @@ export default function Admin() {
           redirect: 'follow'
         };
         console.log(id)
-        fetch(`http://localhost:8080/api/v1/movies/${id}`, requestOptions)
+        fetch(`http://44.204.42.126:8080/api/v1/movies/${id}`, requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));      

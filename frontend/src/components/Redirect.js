@@ -17,7 +17,7 @@ export default function Redirect() {
       headers: myHeaders,
       redirect: 'follow'
     };
-    fetch("http://localhost:8080/api/v1/users/me", requestOptions)
+    fetch("http://44.204.42.126:8080/api/v1/users/me", requestOptions)
   .then(response => { return response.json()})
   .then(data => {setUsers(data)})
   .catch(error => console.log('error', error));

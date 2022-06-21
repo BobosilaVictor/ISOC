@@ -20,7 +20,7 @@ export default function User() {
         headers: myHeaders,
         redirect: 'follow'
         };
-        fetch("http://localhost:8080/api/v1/movies", requestOptions)
+        fetch("http://44.204.42.126:8080/api/v1/movies", requestOptions)
     .then(response => { return response.json()})
     .then(data => {
         getMovies(data)
