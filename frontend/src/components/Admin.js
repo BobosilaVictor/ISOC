@@ -33,7 +33,7 @@ export default function Admin() {
           headers: myHeaders,
           redirect: 'follow'
         };
-        fetch("http://ec2-3-86-165-102.compute-1.amazonaws.com:8080/api/v1/users/me", requestOptions)
+        fetch("http://localhost:8080/api/v1/users/me", requestOptions)
       .then(response => { return response.json()})
       .then(data => {setUsers(data)})
       .catch(error => console.log('error', error));
@@ -69,7 +69,7 @@ export default function Admin() {
           redirect: 'follow'
         };
         
-        fetch("http://ec2-3-86-165-102.compute-1.amazonaws.com:8080/api/v1/movies", requestOptions)
+        fetch("http://localhost:8080/api/v1/movies", requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));        
@@ -83,7 +83,7 @@ export default function Admin() {
           redirect: 'follow'
         };
         console.log(id)
-        fetch(`http://ec2-3-86-165-102.compute-1.amazonaws.com:8080/api/v1/movies/${id}`, requestOptions)
+        fetch(`http://localhost:8080/api/v1/movies/${id}`, requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));      

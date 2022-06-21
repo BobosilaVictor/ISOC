@@ -17,6 +17,9 @@ const Content = ({ movie, onClose }) => (
         <div className="content__description">
           {movie.plot}
         </div>
+        <div className="content__description">
+          Genre: {movie.genres}
+        </div>
       </div>
       <button className="content__close" onClick={onClose}>
         <IconCross />

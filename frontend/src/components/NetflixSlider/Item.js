@@ -10,6 +10,8 @@ const Item = ({ movie }) => (
     {({ onSelectSlide, currentSlide, elementRef }) => {
       const isActive = currentSlide && currentSlide.id === movie.id;
       console.log(movie.id)
+      console.log(movie.image)
+
       return (
         <div
           ref={elementRef}
@@ -19,7 +21,7 @@ const Item = ({ movie }) => (
         >
           <img src={movie.image} alt=""/>
           <ShowDetailsButton onClick={() => onSelectSlide(movie)} />
-          {isActive && <Mark />}
+          {isActive && <Mark movie={movie.image}/>}
         </div>
       );
     }}
