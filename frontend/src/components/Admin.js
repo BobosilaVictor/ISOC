@@ -20,10 +20,28 @@ export default function Admin() {
         setFormMode(form_mode === "Add" ? "Delete" : "Add")
     }
 
-    const check_admin = event =>{
-	event.preventDefault();
-	
-    }
+    const fetchData = () => {
+
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", 'Bearer ' + fetchToken() )
+    
+        
+        var requestOptions = {
+          method: 'GET',
+          headers: myHeaders,
+          redirect: 'follow'
+        };
+        fetch("http://ec2-3-86-165-102.compute-1.amazonaws.com:8080/api/v1/users/me", requestOptions)
+      .then(response => { return response.json()})
+      .then(data => {setUsers(data)})
+      .catch(error => console.log('error', error));
+      console.log(users)
+      }
+    
+      useEffect(() => {
+        fetchData()
+      }, [])
+    
     const addMovie = event =>{
         event.preventDefault();
         setName('');
@@ -49,7 +67,7 @@ export default function Admin() {
           redirect: 'follow'
         };
         
-        fetch("http://44.204.42.126:8080/api/v1/movies", requestOptions)
+        fetch("http://ec2-3-86-165-102.compute-1.amazonaws.com:8080/api/v1/movies", requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));        
@@ -63,12 +81,17 @@ export default function Admin() {
           redirect: 'follow'
         };
         console.log(id)
-        fetch(`http://44.204.42.126:8080/api/v1/movies/${id}`, requestOptions)
+        fetch(`http://ec2-3-86-165-102.compute-1.amazonaws.com:8080/api/v1/movies/${id}`, requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));      
     }
     console.log(form_mode)
+
+    if(users.is_superuser === false){
+        navigate("/admin")
+      }
+
     if(form_mode === 'Add'){
     return (<>
         <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
