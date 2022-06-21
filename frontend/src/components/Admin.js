@@ -12,7 +12,7 @@ export default function Admin() {
     let [imageBd, setImageBd] = useState("")
     let [id, setID] = useState("")
     const [users, setUsers] = useState([])
-    
+
     const navigate = useNavigate();
     const signOut = () => {
         localStorage.removeItem("temitope");
@@ -91,7 +91,7 @@ export default function Admin() {
     console.log(form_mode)
 
     if(users.is_superuser === false){
-        navigate("/admin")
+        navigate("/")
       }
 
     if(form_mode === 'Add'){
